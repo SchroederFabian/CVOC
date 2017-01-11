@@ -1,0 +1,9 @@
+useDynLib(CVOC)
+
+export(ebc, etc)
+
+importFrom(Rcpp, "evalCpp")
+importFrom(stats, "stepfun", "pnorm")
+importFrom(gmp, "chooseZ", "as.bigz", "add.bigz", "mul.bigz")
+
+importClassesFrom(gmp,bigz)

@@ -1,0 +1,27 @@
+Package: CVOC
+Type: Package
+Title: Classification under varying operating conditions
+Version: 0.9
+Date: 2017-01-10
+Author: Fabian Schroeder 
+Maintainer: Fabian Schroeder <fabian.schroeder.fl@ait.ac.at>
+Description: The package provides two filter variable selection methods, with
+    which it is possible to evaluate a variable under consideration of its operating
+    conditions.
+URL: https://github.com/SchroederFabian/CVOC, https://cran.r-project.org/
+    package=CVOC
+BugReports: https://github.com/SchroederFabian/CVOC
+License: GPL-2
+Imports:
+    gmp,
+    stats,
+    Rcpp (>= 0.12.8),
+    RcppMP
+LinkingTo: Rcpp, RcppMP, BH
+SystemRequirements: C++11
+NeedsCompilation: yes
+Depends:
+    Rcpp,
+    R (>= 3.0.1),
+    gmp
+
