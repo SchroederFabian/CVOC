@@ -1,0 +1,43 @@
+
+\name{ebc}
+\alias{ebc}
+\title{Expected Loss of the Bayesian Classifier.}
+\usage{
+ebc(class, data, oc = c(1, 1, 0.5), positive = levels(class)[1],
+  robust = FALSE, p.val = FALSE, adj.method = "BH")
+}
+\arguments{
+\item{class}{a factor vector indicating the class membership of the instances. Must have exactly two levels.}
+
+\item{data}{a data frame with the variables to filer in columns.}
+
+\item{oc}{a vector containing three elements. oc[1], the cost of misclassifying a negative instance, oc[2], the cost 
+of missclassifying a positive instance, and oc[3], the share of negative instances in the population.}
+
+\item{positive}{a character object indicating the factor label of the positive class.}
+
+\item{robust}{a logical indicating whether a robust estimator of the mean and variance of the two classes should be used.}
+
+\item{p.val}{a logical indicating whether the p-values of ebc values under the null hypothesis that both classes are equal
+should be calculated. Currently the null distribution is calculated by permutation.}
+
+\item{adj.method}{a character string indicating the method with which to correct the p-values for multiple testing. See 
+?p.adjust.}
+}
+\value{
+  \item{ebc}{ a numerical vector containing the etc values for every variable of dat.}
+  \item{p.val}{ the corresponding p-values of etc. (optional)}
+  \item{p.val.adj}{ the corresponding adjusted p-values of etc. (optional)}
+}
+\description{
+The function offers a method to select variables by univariate filtering based on the estimated loss of the 
+univariate Bayesian Classifer. The statistic requires the parametric assumption that the variable consists of a mixture of 
+Gaussian variables.
+}
+\examples{
+oc <- c(1,3,0.5)
+class <- factor(c(rep(0, 25), rep(1, 25)), labels=c("neg", "pos"))
+data <- data.frame("var1"=c(rnorm(25, 0, 1/2), rnorm(25, 1, 2)))
+res <- ebc(class, data, oc, positive="pos", p.val=TRUE)
+}
+
