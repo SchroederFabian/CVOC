@@ -1,8 +1,21 @@
 
-This git overviews the creation and further development of the R package CVOC. The creation of the package is controlled by the bash script CVOCcreate.sh. This script calls all the necessary R functions in the following order.
+This git overviews the creation and further development of the R package CVOC. 
 
-1) using Rcpp::Rcpp.package.skeleton to create the package skeleton.
-2) copying the required files, such as DESCRIPTION, NAMESPACE, Makevars, etc. , into the correct folders
-3) creating the .Rd documentation files using roxygen2::roxygenise()
-4) checking the R-package using R CMD check
-5) building the R-package using R CMD build
+In order to run CVOC the C libraries gmp, mfpr and mfprc++ must be installed
+
+for Linux (Debian) do:
+ sudo apt-get install libgmp3-dev
+ sudo apt-get install libmpfr-dev
+ sudo apt-get install libmpfrc++-dev
+ 
+then in the R console:
+ library("devtools")
+ install_github("Thell/RcppMP")
+ install.packages("gmp")
+ install.packages("Rmpfr")
+ 
+ 
+ 
+ 
+ 
+ 

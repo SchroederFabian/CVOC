@@ -10,7 +10,7 @@ etc(class, data, oc, positive = levels(class)[1], p.val = TRUE,
 \arguments{
 \item{class}{a factor vector indicating the class membership of the instances. Must have exactly two levels.}
 
-\item{data}{a data frame with the variables to filer in columns.}
+\item{data}{a data frame with variables in columns.}
 
 \item{oc}{a vector containing three elements. oc[1], the cost of misclassifying a negative instance, oc[2], the cost 
 of missclassifying a positive instance, and oc[3], the share of negative instances in the population.}
@@ -26,9 +26,10 @@ should be calculated. The exact null distribution is calculated by means of a re
 ?p.adjust.}
 }
 \value{
-  \item{etc}{ a numerical vector containing the etc values for every variable of dat.}
-  \item{p.val}{ the corresponding p-values of etc. (optional)}
-  \item{p.val.adj}{ the corresponding adjusted p-values of etc. (optional)}
+a list containing three components:
+\item{etc}{ a numerical vector containing the etc values for every variable of dat.}
+\item{p.val}{ the corresponding p-values of etc. (optional)}
+\item{p.val.adj}{ the corresponding adjusted p-values of etc. (optional)}
 }
 \description{
 The function offers a method to select variables by univariate filtering based on the 
@@ -40,5 +41,6 @@ oc <- c(1,3,0.5)
 class <- factor(c(rep(0, 25), rep(1, 25)), labels=c("neg", "pos"))
 data <- data.frame("var1"=c(rnorm(25, 0, 1/2), rnorm(25, 1, 2)))
 res <- etc(class, data, oc, positive="pos", p.val=TRUE)
+
 }
 

@@ -15,17 +15,19 @@
 #' ?p.adjust.
 #' @param plot a logical. If TRUE a plot of the null distribution will be generated.
 #' 
-#' @value etc The output is a list with three items. \code{etc} is a numerical vector containing the ebc values for every 
-#' variable of data. \code{p.val} is a numerical vector containing the etc values for every variable of data. and \code{p.val.adj} is 
-#' the corresponding adjusted p-values of etc. (optional)
+#' @return a list containing three components:
+#' \item{etc}{ a numerical vector containing the etc values for every variable of dat.}
+#' \item{p.val}{ the corresponding p-values of etc. (optional)}
+#' \item{p.val.adj}{ the corresponding adjusted p-values of etc. (optional)}
 #' 
 #' @examples 
 #' oc <- c(1,3,0.5)
 #' class <- factor(c(rep(0, 25), rep(1, 25)), labels=c("neg", "pos"))
 #' data <- data.frame("var1"=c(rnorm(25, 0, 1/2), rnorm(25, 1, 2)))
 #' res <- etc(class, data, oc, positive="pos", p.val=TRUE)
-
+#' 
 #' @export
+
 etc <- function(class, data, oc, positive=levels(class)[1], p.val=TRUE, plot=FALSE, adj.method="BH") {
   
   if (is.null(dim(data))) data <- as.data.frame(data)

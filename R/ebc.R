@@ -1,4 +1,4 @@
-#' Expected Loss of the Bayesian Classifier.
+#' Expected Loss of the Bayesian Classifier
 #' 
 #' @description The function offers a method to select variables by univariate filtering based on the estimated loss of the 
 #' univariate Bayesian Classifer. The statistic requires the parametric assumption that the variable consists of a mixture of 
@@ -15,17 +15,18 @@
 #' @param adj.method a character string indicating the method with which to correct the p-values for multiple testing. See 
 #' ?p.adjust.
 #' 
-#' @return The output is a list with three items. \code{ebc} is a numerical vector containing the ebc values for every 
-#' variable of data. \code{p.val} is a numerical vector containing the ebc values for every variable of data. and \code{p.val.adj} is 
-#' the corresponding adjusted p-values of ebc. (optional)
+#' @return a list containing three components:
+#' \item{ebc}{ a numerical vector containing the etc values for every variable of dat.}
+#' \item{p.val}{ the corresponding p-values of etc. (optional)}
+#' \item{p.val.adj}{ the corresponding adjusted p-values of ebc. (optional)}
 #' 
 #' @examples 
 #' oc <- c(1,3,0.5)
 #' class <- factor(c(rep(0, 25), rep(1, 25)), labels=c("neg", "pos"))
 #' data <- data.frame("var1"=c(rnorm(25, 0, 1/2), rnorm(25, 1, 2)))
 #' res <- ebc(class, data, oc, positive="pos", p.val=TRUE)
-
 #' @export
+
 ebc <- function(class, data, oc=c(1,1,0.5), positive=levels(class)[1], robust=FALSE,  p.val=FALSE, adj.method="BH") {
   
   p <- ifelse(class(data)=="numeric", 1, ncol(data))

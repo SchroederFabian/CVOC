@@ -1,5 +1,23 @@
-
+#' Generate the Null Distribution of the Threshold Classifier.
+#' 
+#' @description The function offers an algorithmic aproach to generating the null distribution of the etc classifier under the null hypothesis that the distributions of the positive and the negative class are identical.
+#' 
+#' @param n0 an integer indicating the number of negative instances in the sample.
+#' @param n1 an integer indicating the number of positive instances in the sample.
+#' @param c0 the cost of misclassifying a negative instance.
+#' @param c1 the cost of misclassifying a positive instance.
+#' @param pi0 a real number between 0 and 1 indicating the percentage of negative instances in the population.
+#' 
+#' @return a list containing three components:
+#' \item{val}{ a vector with the number of possible values than etc can take.}
+#' \item{pos.perm}{ the number of possible permutations for the given number of positives and negatives.}
+#' \item{fav.perm}{ a vector with the number of favorable permutations for every value in val.}
+#' 
+#' @examples 
+#' etc.genND(25, 27, 1, 3, 0.5)
+#' 
 #' @export
+
 etc.genND <- function(n0, n1, c0, c1, pi0) {
   
   # generate list with pairs (fp, fn), for which to calculate the favorable permutations
